@@ -5,12 +5,12 @@ public class Account {
     private Address defaultDeliveryAddress;
     private User user;
 
-    Account(){
+    Account() {
         this.isActive = false;
     }
 
-    void activate(){
-        this.isActive=true;
+    void activate() {
+        this.isActive = true;
     }
 
     public Address getDefaultDeliveryAddress() {
@@ -19,6 +19,9 @@ public class Account {
 
     public void setDefaultDeliveryAddress(Address defaultDeliveryAddress) {
         this.defaultDeliveryAddress = defaultDeliveryAddress;
+        if (defaultDeliveryAddress != null) {
+            activate();
+        }
     }
 
     public boolean isActive() {

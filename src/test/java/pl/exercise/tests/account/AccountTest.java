@@ -3,12 +3,12 @@ package pl.exercise.tests.account;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import pl.exercise.tests.account.Account;
-import pl.exercise.tests.account.Address;
+
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 /*hamcrest matchers*/
 
@@ -48,6 +48,23 @@ class AccountTest {
                 () -> assertEquals("Kwiatowa", address.getStreet())
 
         );
+
+    }
+
+    @Test
+    void accountWithNotNullDefaultDeliveryAdressShouldBeActive(){
+        //given
+        Account account = new Account();
+        Address address = new Address("77", "Krakowska");
+
+        //when
+        account.setDefaultDeliveryAddress(address);
+        //then
+        assertTrue(account.isActive());
+        assumingThat(account.getDefaultDeliveryAddress()!=null, ()->{
+            assertTrue(account.isActive());
+
+        });
 
     }
 

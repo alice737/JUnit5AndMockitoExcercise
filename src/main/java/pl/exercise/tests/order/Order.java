@@ -24,5 +24,11 @@ public class Order {
 
     public void getSumOfMealPrice(){}
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "mealList=" + mealList +
+                '}';
+    }
 }
 
